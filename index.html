@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier Banking System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+    <div class="container">
+        <nav class="navbar">
+            <div class="brand">
+                <i class="fas fa-university"></i>
+                <h1>Premier Bank</h1>
+            </div>
+            <div class="nav-actions">
+                <button id="modeToggle" class="btn-icon">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+
+        <main class="content">
+            <div class="auth-container">
+                <!-- Login Form -->
+                <div class="auth-card" id="loginForm">
+                    <div class="card-header">
+                        <h2><i class="fas fa-sign-in-alt"></i> Login to Your Account</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="loginEmail">Email Address</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="loginEmail" placeholder="Enter your email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="loginPassword" placeholder="Enter your password">
+                            </div>
+                        </div>
+                        <button class="btn-primary" onclick="login()">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                        <div class="auth-footer">
+                            <p>Don't have an account? <a href="#" onclick="showRegister()">Register here</a></p>
+                            <a href="#" class="forgot-password">Forgot password?</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registration Form -->
+                <div class="auth-card" id="registerForm" style="display:none">
+                    <div class="card-header">
+                        <h2><i class="fas fa-user-plus"></i> Create New Account</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regFirstName">First Name</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="regFirstName" placeholder="John">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="regLastName">Last Name</label>
+                                <input type="text" id="regLastName" placeholder="Doe">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="regEmail">Email Address</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="regEmail" placeholder="john.doe@example.com">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regPassword">Password</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" id="regPassword" placeholder="Create password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="regConfirmPassword">Confirm Password</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" id="regConfirmPassword" placeholder="Confirm password">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regPhone">Phone Number</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-phone"></i>
+                                    <input type="tel" id="regPhone" placeholder="+1 (555) 123-4567">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="regDob">Date of Birth</label>
+                                <input type="date" id="regDob">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="regAddress">Street Address</label>
+                            <input type="text" id="regAddress" placeholder="123 Main St">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="regCity">City</label>
+                                <input type="text" id="regCity" placeholder="New York">
+                            </div>
+                            <div class="form-group">
+                                <label for="regState">State/Province</label>
+                                <input type="text" id="regState" placeholder="NY">
+                            </div>
+                            <div class="form-group">
+                                <label for="regZip">ZIP/Postal Code</label>
+                                <input type="text" id="regZip" placeholder="10001">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="regInitialDeposit">Initial Deposit ($)</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                                <input type="number" id="regInitialDeposit" placeholder="500.00" min="50" step="0.01">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="regAccountType">Account Type</label>
+                            <select id="regAccountType">
+                                <option value="checking">Checking Account</option>
+                                <option value="savings">Savings Account</option>
+                                <option value="business">Business Account</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group terms">
+                            <input type="checkbox" id="regTerms">
+                            <label for="regTerms">I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></label>
+                        </div>
+                        
+                        <button class="btn-primary" onclick="register()">
+                            <i class="fas fa-user-plus"></i> Create Account
+                        </button>
+                        
+                        <div class="auth-footer">
+                            <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Banking Dashboard (Hidden Initially) -->
+            <div class="dashboard" id="dashboard" style="display:none">
+                <div class="user-welcome">
+                    <div class="user-info">
+                        <div class="avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div>
+                            <h2>Welcome back, <span id="userName"></span></h2>
+                            <p class="last-login">Last login: <span id="lastLogin"></span></p>
+                        </div>
+                    </div>
+                    <button class="btn-secondary" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+                
+                <div class="stats-cards">
+                    <div class="stat-card balance">
+                        <div class="stat-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Account Balance</h3>
+                            <p id="accountBalance">$0.00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card income">
+                        <div class="stat-icon">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Income</h3>
+                            <p id="totalIncome">$0.00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card expenses">
+                        <div class="stat-icon">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Expenses</h3>
+                            <p id="totalExpenses">$0.00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="action-cards">
+                    <div class="action-card">
+                        <h3><i class="fas fa-plus-circle"></i> Deposit</h3>
+                        <div class="form-group">
+                            <label for="depositAmount">Amount</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                                <input type="number" id="depositAmount" placeholder="0.00" step="0.01">
+                            </div>
+                        </div>
+                        <button class="btn-action" onclick="deposit()">
+                            <i class="fas fa-check"></i> Confirm Deposit
+                        </button>
+                    </div>
+                    
+                    <div class="action-card">
+                        <h3><i class="fas fa-minus-circle"></i> Withdraw</h3>
+                        <div class="form-group">
+                            <label for="withdrawAmount">Amount</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                                <input type="number" id="withdrawAmount" placeholder="0.00" step="0.01">
+                            </div>
+                        </div>
+                        <button class="btn-action" onclick="withdraw()">
+                            <i class="fas fa-check"></i> Confirm Withdrawal
+                        </button>
+                    </div>
+                    
+                    <div class="action-card">
+                        <h3><i class="fas fa-exchange-alt"></i> Transfer</h3>
+                        <div class="form-group">
+                            <label for="transferEmail">Recipient Email</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="email" id="transferEmail" placeholder="recipient@example.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="transferAmount">Amount</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                                <input type="number" id="transferAmount" placeholder="0.00" step="0.01">
+                            </div>
+                        </div>
+                        <button class="btn-action" onclick="transfer()">
+                            <i class="fas fa-paper-plane"></i> Send Money
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="transaction-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-history"></i> Transaction History</h3>
+                        <div class="filter-options">
+                            <select id="transactionFilter">
+                                <option value="all">All Transactions</option>
+                                <option value="deposit">Deposits</option>
+                                <option value="withdraw">Withdrawals</option>
+                                <option value="transfer">Transfers</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="transaction-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transactionsList">
+                                <!-- Transactions will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
